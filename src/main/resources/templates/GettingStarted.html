@@ -6,14 +6,15 @@
     <link th:replace="templates/partials :: bootstrapLink">
 </head>
 
-    <nav th:replace="templates/partials :: navbar"></nav>
+    <nav th:replace="partials/partials :: navbar"></nav>
     <h1>Getting Started</h1>
 
-    <script th:replace="templates/partials :: bootstrapScript"></script>
+    <script th:replace="partials/partials :: bootstrapScript"></script>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.toggle-paragraph').hide();
@@ -158,5 +159,37 @@
         Cryptocurrency is a highly volatile investment, and the value of your investment can go up or down significantly in a short period of time. Cryptocurrency is also not backed by any government or central bank, so there is no guarantee that it will retain its value or that you will be able to sell it for a profit. Additionally, cryptocurrency exchanges and wallets can be vulnerable to hacking and other security breaches, so it's important to take steps to protect your cryptocurrency from theft or loss.</p>
 </div>
 </body>
+
+    <section>
+        <h2>Additional Video Resources</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/1YyAzVmP9xQ"  allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Yb6825iv0Vk&t=32s"  allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rYQgy8QDEBI" allowfullscreen></iframe>
+                    <div class ="carousel-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1YyAzVmP9xQ"  allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
+</section>
+    </script>
+
+
+
 
 </html>
