@@ -53,8 +53,6 @@
 
                 </li>
 
-
-
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
                         <button class="btn-link btn" style="margin-top: 8px">Logout</button>
@@ -72,6 +70,28 @@
         </div>
     </div>
 </nav>
+
+<!--- Footer Partial --->
+<footer th:fragment= "footer" style= "background-color: #037dd6; color: #fff; padding: 20px; border: 1px solid #fff;">
+    <h2 style="margin-bottom: 10px;">Contact Us</h2>
+    <form action="submit-form.php" method="post">
+        <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+        <input type="text" id="name" name="name" required
+               style="padding: 5px; border-radius: 5px; border: none; margin-bottom: 10px;">
+        <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+        <input type="email" id="email" name="email" required
+               style="padding: 5px; border-radius: 5px; border: none; margin-bottom: 10px;">
+        <label for="message" style="display: block; margin-bottom: 5px;">Message:</label>
+        <textarea id="message" name="message" required
+                  style="padding: 5px; border-radius: 5px; border: none; margin-bottom: 5px;"></textarea>
+        <br>
+        <button type="submit"
+                style="background-color: #fff; color: #037dd6; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Send
+        </button>
+    </form>
+    <p style="text-align: center;">&copy; 2023 CryptEX. </p>
+</footer>
 
 
 
