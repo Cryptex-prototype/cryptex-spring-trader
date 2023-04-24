@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
 
     <title>About Our Team</title>
     <link th:replace="partials/partials:: bootstrapLink">
+
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -12,6 +13,10 @@
 
 </nav>
 <style>
+    body {
+        background-image: url("/images/blueCrypto.webp");
+    }
+
     .team-member {
         opacity: 0.8;
         transition: opacity 0.5s;
@@ -37,36 +42,36 @@
 <main class="container text-center">
     <div class="team-member">
         <h3>Horace Smith</h3>
-      <img src="/images/1.jpg"alt="Horace Smith">
+        <img src="/images/Q.jpg" alt="Horace Smith">
         <p>Horace is an experienced professional with expertise in various fields including Balenciaga.</p>
     </div>
 
     <div class="team-member">
         <h3>Jason Crites</h3>
-        <img src="/images/bet.jpg" alt="Jason Crites">
+        <img src="/images/lighthouse.jpeg" alt="Jason Crites">
 
         <p>Jason is a skilled individual who has worked on numerous projects while wearing Balenciaga</p>
     </div>
 
     <div class="team-member">
         <h3>Nickolas Solley</h3>
-<!--        <img th:src="../static/images/headshot2.jpg" alt="Nickolas Solley">-->
-        <p>Nickolas has extensive knowledge in different areas and has delivered exceptional results wearing Balenciaga.</p>
+<img src ="/images/bet.jpg" alt ="girl with glasses">
+        <p>Nickolas has extensive knowledge in different areas and has delivered exceptional results wearing
+            Balenciaga.</p>
     </div>
 
     <div class="team-member">
         <h3>Lonnie Arellano</h3>
-<!--        <img th:src="../static/images/Q.jpg" alt="Lonnie Arellano">-->
-        <p>Lonnie is a dedicated professional who brings a positive attitude to everything he does with Balenciaga.</p>
+<img src="/images/pizza.png" alt ="pizza slice">       <p>Lonnie is a dedicated professional who brings a positive attitude to everything he does with Balenciaga.</p>
     </div>
 
     <div class="team-member">
         <h3>Andre</h3>
-<!--        <img th:src="../static/images/lighthouse.jpeg" alt="Andre">-->
+      <img src="/images/1.jpg">
         <p>There is only Balenciaga</p>
     </div>
     <br>
-<script th:replace="partials/partials :: footer"></script>
+    <script th:replace="partials/partials :: footer"></script>
 </main>
 
 
