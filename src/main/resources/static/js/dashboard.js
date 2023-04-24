@@ -1157,24 +1157,7 @@ $('#create-watchlist-form').on('submit', function (event) {
         },
     });
 });
-//
-// function createWatchlistButton(watchlistName) {
-//     const navPills = $('#v-pills-tab');
-//
-//     const newWatchlistButton = $('<button></button>');
-//     newWatchlistButton.text(watchlistName);
-//     newWatchlistButton.addClass('nav-link');
-//     newWatchlistButton.attr('type', 'button');
-//     newWatchlistButton.attr('data-bs-toggle', 'pill');
-//     newWatchlistButton.attr('role', 'tab');
-//     newWatchlistButton.attr('aria-controls', watchlistName + '-tabpanel');
-//     newWatchlistButton.attr('aria-selected', 'false');
-//
-//     navPills.find('#create-watchlist-btn').before(newWatchlistButton);
-//
-//     $('#watchlist-name').val('');
-//     $('button[aria-label="Close"]').click();
-// }
+
 function getWatchlistApiUrl(watchlistName) {
     // Replace this with the actual API URL format for your watchlists
     return `https://api.example.com/watchlists/${watchlistName}`;
@@ -1195,10 +1178,21 @@ function createWatchlistButton(watchlistName) {
     const watchlistApiUrl = getWatchlistApiUrl(watchlistName);
     newWatchlistButton.attr('onclick', `getChart('${watchlistApiUrl}');clearChart()`);
 
-    navPills.find('#create-watchlist-btn').before(newWatchlistButton);
+    // navPills.find('#create-watchlist-btn').before(newWatchlistButton);
+    navPills.find('button.nav-link').last().after(newWatchlistButton);
+
 
     $('#watchlist-name').val('');
     $('button[aria-label="Close"]').click();
 }
+
+$('#create-watchlist-btn').on('click', function () {
+    // Clear the added coins array and the added-coins list in the HTML
+    addedCoins = [];
+    $('#added-coins').empty();
+
+    // Clear the search input field
+    $('#search').val('');
+});
 
 

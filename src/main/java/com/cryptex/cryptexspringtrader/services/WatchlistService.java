@@ -108,6 +108,11 @@ public class WatchlistService {
     public List<Watchlist> getAllWatchlists() {
         return watchlistRepository.findAll();
     }
+
+    public Optional<Watchlist> getWatchlistById(Long id) {
+        return watchlistRepository.findById(id);
+    }
+
 }
 
 //package com.cryptex.cryptexspringtrader.services;

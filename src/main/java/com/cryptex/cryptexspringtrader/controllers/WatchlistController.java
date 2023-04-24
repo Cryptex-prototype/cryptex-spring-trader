@@ -17,14 +17,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import com.cryptex.cryptexspringtrader.repositories.CoinDataRepository;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -97,6 +95,11 @@ public class WatchlistController {
         watchlistService.createWatchlistForUser(watchlist, userDetails);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @GetMapping("/watchlist/{id}")
+    public ResponseEntity<?> getWatchlistById(@PathVariable Long id) {
+        Optional<Watchlist> watchlist = watchlistService.getWatchlistById(id);
+        return watchlist.isPresent() ? ResponseEntity.ok(watchlist.get()) : ResponseEntity.notFound().build();
     }
 
 
