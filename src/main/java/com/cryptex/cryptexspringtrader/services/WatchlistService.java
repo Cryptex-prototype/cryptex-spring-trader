@@ -23,10 +23,10 @@ public class WatchlistService {
 
 
 
-    public Watchlist createWatchlistForUser(Watchlist watchlist, UserDetails userDetails) {
+    public Watchlist createWatchlistForUser(Watchlist watchlist, User user) {
         // Retrieve the user from the database using the userDetails
         // Replace User and UserRepository with your actual user entity and repository classes
-        User user = userRepository.findByUsername(userDetails.getUsername());
+//        User user = userRepository.findByUsername(userDetails.getUsername());
 
         // Set the user for the watchlist
         watchlist.setUser(user);
