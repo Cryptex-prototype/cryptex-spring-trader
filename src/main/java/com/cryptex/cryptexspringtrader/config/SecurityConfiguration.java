@@ -310,7 +310,7 @@ public class  SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/profile", // only authenticated users can create ads
-                        "/logout", "/dashboard", "/api/dashboard/", "/api/watchlists","/api/watchlists/*","/api/dashboard/**" // only authenticated users can edit ads
+                        "/logout", "/dashboard/**", "/api/dashboard/", "/api/watchlists","/api/watchlists/**","/api/dashboard/**" // only authenticated users can edit ads
                 )
                 .authenticated()
                 /* Pages that can be viewed without having to log in */

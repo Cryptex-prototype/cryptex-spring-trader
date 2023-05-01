@@ -698,6 +698,111 @@ $('#added-coins').on('click', '.delete-coin', function () {
     $(this).closest('li').remove();
 });
 
+
+
+
+
+
+// $('#create-watchlist-form').on('submit', function (event) {
+//     console.log("Create watchlist form submitted");
+//     event.preventDefault();
+//
+//     // Get the CSRF token
+//     const csrfToken = $('meta[name="_csrf"]').attr('content');
+//     const csrfHeader = $('meta[name="_csrf_header"]').attr('content');
+//
+//     // Get the watchlist name and coin data
+//     const watchlistName = $('#watchlist-name').val().trim();
+//     const coinDataList = addedCoins.map(coin => ({id: coin.id, name: coin.name}));
+//
+//     // Send the data to the server
+//     $.ajax({
+//         url: '/api/watchlists',
+//         type: 'POST',
+//         contentType: 'application/json;charset=UTF-8',
+//         headers: {
+//             [csrfHeader]: csrfToken
+//         },
+//         data: JSON.stringify({name: watchlistName, coinDataList: coinDataList}),
+//         success: function (watchlistId) {
+//             console.log("Watchlist created successfully:", watchlistId, "with coin data:", coinDataList);
+//             Swal.default.fire(
+//                 'Congratulations',
+//                 'You have created a new watchlist',
+//                 'success'
+//             )
+//             let formattedArray = coinDataList.map(coin => coin.id).join('%2C');
+//
+//             console.log("Formatted coin IDs:", formattedArray);
+//
+//             const watchlistButtonContainer = $('<div></div>');
+//             watchlistButtonContainer.addClass('watchlistButtonContainer d-flex align-items-center');
+//             watchlistButtonContainer.attr('data-watchlist-id', watchlistId);
+//
+//             // Create the delete button
+//             const deleteWatchlistButton = $('<button class="animate__animated animate__slideInLeft"></button>');
+//             deleteWatchlistButton.text('delete');
+//             deleteWatchlistButton.addClass('deleteWatchlistButton');
+//             deleteWatchlistButton.css('display', 'none'); // Initially hide the delete button
+//             deleteWatchlistButton.attr('onclick', `deleteWatchlist(${watchlistId})`);
+//
+//             const navPills = $('#v-pills-tab');
+//             const newWatchlistButton = $(' <button class="animate__animated animate__fadeInUpBig"></button>');
+//             newWatchlistButton.text(watchlistName);
+//             newWatchlistButton.addClass('nav-link w-100 ');
+//             newWatchlistButton.attr('type', 'button');
+//             newWatchlistButton.attr('name', 'createWatchlist');
+//             newWatchlistButton.attr('data-bs-toggle', 'pill');
+//             newWatchlistButton.attr('role', 'tab');
+//             newWatchlistButton.attr('aria-controls', watchlistName + '-tabpanel');
+//             newWatchlistButton.attr('aria-selected', 'false');
+//
+//             newWatchlistButton.attr('onclick', `getChart('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${formattedArray}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d&locale=en', '${watchlistName}')`);
+//
+//             // Append the delete button and watchlist button to the container
+//             watchlistButtonContainer.append(deleteWatchlistButton);
+//             watchlistButtonContainer.append(newWatchlistButton);
+//
+//             // Insert the container before the last nav-link element
+//             navPills.children('.nav-link:last-child').before(watchlistButtonContainer);
+//
+//             // Show delete button on hover and hide it when the mouse leaves
+//             watchlistButtonContainer.hover(
+//                 function() {
+//                     // console.log("Hovering over watchlist button container");
+//                     $(this).find('.deleteWatchlistButton').css('display', 'inline-block');
+//                 },
+//                 function() {
+//                     // console.log("Mouse leaving watchlist button container");
+//                     $(this).find('.deleteWatchlistButton').css('display', 'none');
+//                 }
+//             );
+//
+//             $('#create-watchlist-btn').on('click', function () {
+//                 console.log("Create watchlist button clicked");
+//                 // Clear the added coins array and the added-coins list in the HTML
+//                 addedCoins = [];
+//                 $('#added-coins').empty();
+//
+//                 // Clear the search input field
+//                 $('#search').val('');
+//             });
+//
+//             // Reset the watchlist name input and close the modal
+//             console.log("Resetting watchlist name input and closing modal");
+//             $('#watchlist-name').val('');
+//             $('button[aria-label="Close"]').click();
+//         },
+//         error: function () {
+//             Swal.default.fire(
+//                 'Sorry',
+//                 'Your watchlist could not be created',
+//                 'error'
+//             )
+//         },
+//     });
+// });
+
 $('#create-watchlist-form').on('submit', function (event) {
     console.log("Create watchlist form submitted");
     event.preventDefault();
@@ -710,7 +815,7 @@ $('#create-watchlist-form').on('submit', function (event) {
     const watchlistName = $('#watchlist-name').val().trim();
     const coinDataList = addedCoins.map(coin => ({id: coin.id, name: coin.name}));
 
-    // Send the data to the server
+    // Send the data to the server to create a new watchlist
     $.ajax({
         url: '/api/watchlists',
         type: 'POST',
@@ -730,63 +835,23 @@ $('#create-watchlist-form').on('submit', function (event) {
 
             console.log("Formatted coin IDs:", formattedArray);
 
-            const watchlistButtonContainer = $('<div></div>');
-            watchlistButtonContainer.addClass('watchlistButtonContainer d-flex align-items-center');
-            watchlistButtonContainer.attr('data-watchlist-id', watchlistId);
+            // Create the watchlist button and add it to the DOM
+            createWatchlistButton(watchlistId, watchlistName, formattedArray);
 
-            // Create the delete button
-            const deleteWatchlistButton = $('<button class="animate__animated animate__slideInLeft"></button>');
-            deleteWatchlistButton.text('delete');
-            deleteWatchlistButton.addClass('deleteWatchlistButton');
-            deleteWatchlistButton.css('display', 'none'); // Initially hide the delete button
-            deleteWatchlistButton.attr('onclick', `deleteWatchlist(${watchlistId})`);
+            // Clear the added coins array and the added-coins list in the HTML
+            addedCoins = [];
+            $('#added-coins').empty();
 
-            const navPills = $('#v-pills-tab');
-            const newWatchlistButton = $(' <button class="animate__animated animate__fadeInUpBig"></button>');
-            newWatchlistButton.text(watchlistName);
-            newWatchlistButton.addClass('nav-link w-100 ');
-            newWatchlistButton.attr('type', 'button');
-            newWatchlistButton.attr('name', 'createWatchlist');
-            newWatchlistButton.attr('data-bs-toggle', 'pill');
-            newWatchlistButton.attr('role', 'tab');
-            newWatchlistButton.attr('aria-controls', watchlistName + '-tabpanel');
-            newWatchlistButton.attr('aria-selected', 'false');
-
-            newWatchlistButton.attr('onclick', `getChart('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${formattedArray}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d&locale=en', '${watchlistName}')`);
-
-            // Append the delete button and watchlist button to the container
-            watchlistButtonContainer.append(deleteWatchlistButton);
-            watchlistButtonContainer.append(newWatchlistButton);
-
-            // Insert the container before the last nav-link element
-            navPills.children('.nav-link:last-child').before(watchlistButtonContainer);
-
-            // Show delete button on hover and hide it when the mouse leaves
-            watchlistButtonContainer.hover(
-                function() {
-                    // console.log("Hovering over watchlist button container");
-                    $(this).find('.deleteWatchlistButton').css('display', 'inline-block');
-                },
-                function() {
-                    // console.log("Mouse leaving watchlist button container");
-                    $(this).find('.deleteWatchlistButton').css('display', 'none');
-                }
-            );
-
-            $('#create-watchlist-btn').on('click', function () {
-                console.log("Create watchlist button clicked");
-                // Clear the added coins array and the added-coins list in the HTML
-                addedCoins = [];
-                $('#added-coins').empty();
-
-                // Clear the search input field
-                $('#search').val('');
-            });
+            // Clear the search input field
+            $('#search').val('');
 
             // Reset the watchlist name input and close the modal
             console.log("Resetting watchlist name input and closing modal");
             $('#watchlist-name').val('');
             $('button[aria-label="Close"]').click();
+
+            // Load the user's watchlists and add them to the DOM
+            loadUserWatchlists();
         },
         error: function () {
             Swal.default.fire(
@@ -797,6 +862,87 @@ $('#create-watchlist-form').on('submit', function (event) {
         },
     });
 });
+$(document).ready(function () {
+    console.log("Dashboard page loaded");
+
+    // Get the CSRF token
+    const csrfToken = $('meta[name="_csrf"]').attr('content');
+    const csrfHeader = $('meta[name="_csrf_header"]').attr('content');
+
+    // Load the user's watchlists and add them to the DOM
+    loadUserWatchlists();
+
+    function loadUserWatchlists() {
+        // Send a GET request to retrieve the user's watchlists
+        $.ajax({
+            url: '/api/watchlists',
+            type: 'GET',
+            contentType: 'application/json;charset=UTF-8',
+            headers: {
+                [csrfHeader]: csrfToken
+            },
+            success: function (watchlists) {
+                console.log("User's watchlists:", watchlists);
+                // Loop through the watchlists and create a button for each one
+                for (let i = 0; i < watchlists.length; i++) {
+                    const watchlist = watchlists[i];
+                    createWatchlistButton(watchlist.id, watchlist.name, watchlist.coinDataList.map(coin => coin.id).join('%2C'));
+                }
+            },
+            error: function () {
+                console.log("Failed to load user's watchlists");
+            },
+        });
+    }
+
+    function createWatchlistButton(watchlistId, watchlistName, formattedArray) {
+        const watchlistButtonContainer = $('<div></div>');
+        watchlistButtonContainer.addClass('watchlistButtonContainer d-flex align-items-center');
+        watchlistButtonContainer.attr('data-watchlist-id', watchlistId);
+// Create the delete button
+        const deleteWatchlistButton = $('<button class="animate__animated animate__slideInLeft"></button>');
+        deleteWatchlistButton.text('delete');
+        deleteWatchlistButton.addClass('deleteWatchlistButton');
+        deleteWatchlistButton.css('display', 'none'); // Initially hide the delete button
+        deleteWatchlistButton.attr('onclick', `deleteWatchlist(${watchlistId})`);
+
+        const navPills = $('#v-pills-tab');
+        const newWatchlistButton = $(' <button class="animate__animated animate__fadeInUpBig"></button>');
+        newWatchlistButton.text(watchlistName);
+        newWatchlistButton.addClass('nav-link w-100 ');
+        newWatchlistButton.attr('type', 'button');
+        newWatchlistButton.attr('name', 'createWatchlist');
+        newWatchlistButton.attr('data-bs-toggle', 'pill');
+        newWatchlistButton.attr('role', 'tab');
+        newWatchlistButton.attr('aria-controls', watchlistName + '-tabpanel');
+        newWatchlistButton.attr('aria-selected', 'false');
+        newWatchlistButton.attr('onclick', `getChart('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${formattedArray}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d&locale=en', '${watchlistName}')`);
+
+// Append the delete button and watchlist button to the container
+        watchlistButtonContainer.append(deleteWatchlistButton);
+        watchlistButtonContainer.append(newWatchlistButton);
+
+// Insert the container before the last nav-link element
+        navPills.children('.nav-link:last-child').before(watchlistButtonContainer);
+
+// Show delete button on hover and hide it when the mouse leaves
+        watchlistButtonContainer.hover(
+            function () {
+                // console.log("Hovering over watchlist button container");
+                $(this).find('.deleteWatchlistButton').css('display', 'inline-block');
+            },
+            function () {
+                // console.log("Mouse leaving watchlist button container");
+                $(this).find('.deleteWatchlistButton').css('display', 'none');
+            }
+        );
+    }
+})
+
+
+
+
+
 
 function deleteWatchlist(watchlistId) {
     console.log("Deleting watchlist:", watchlistId);
