@@ -832,3 +832,20 @@ function deleteWatchlist(watchlistId) {
         }
     });
 }
+
+const getWatchlists = () => {
+    try {
+        $.getJSON("/api/coin-data")
+            .done(function (data){
+                console.log(data)
+
+
+            })
+
+        // let formattedArray = coinDataList.map(coin => coin.id).join('%2C');
+    }catch (e) {
+        console.error(e + "Failed to Fetch Watchlists")
+    }
+}
+
+getWatchlists()

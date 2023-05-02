@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang ="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec ="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using the Market Page</title>
+  <link th:replace="partials/partials :: bootstrapLink">
+  <style>
+    *{
+      color: white;
+    }
+    body{
+      background-color: #2a2b3c;
+    }
+    .dark{
+      background-color: #1c1d2b;
+    }
+    .picture{
+      background-color: white;
+      width: 300px;
+      height: 300px;
+    }
+    .picture2{
+      background-color: white;
+      width: 400px;
+      height: 400px;
+    }
+    @media screen and (min-width:768px) {
+      .fix{
+        padding-right: 120px!important;
+        padding-left: 0!important;
+      }
+    }
+    @media screen and (min-width:1200px) {
+      .fix{
+        padding-right: 120px!important;
+        padding-left: 0!important;
+      }
+    }
+    /*.fix{*/
+    /*    padding-right: 120px!important;*/
+    /*    padding-left: 0!important;*/
+    /*}*/
+
+
+
+  </style>
+
+</head>
+
+<body class ="body">
+<nav th:replace="partials/navBar :: navbar2"></nav>
+
+
+<div class="container">
+  <div class="col">
+    <h1>Using our Market Page</h1>
+
+  </div>
+  <div class="row">
+
+    <div class=" col-sm-12 col-md-8 col-lg-4 d-flex justify-content-center fix">
+      <div class="picture "></div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-8 p-3 d-flex flex-column justify-content-center dark ">
+
+      <h5 class="card-title">Main Chart</h5>
+      <p class="card-text ">When the market page loads you'll the current top 100 coins by market cap by default. Each row displays that crypto's name, icon, trade ticker</p>
+
+
+
+
+    </div>
+
+  </div>
+  <div class="row mt-5">
+
+    <div class=" col-sm-12 col-md-6 ">
+      <p class="dark m-3 p-3">Bitcoin is the first and most well-known cryptocurrency, but there are now thousands of other cryptocurrencies in circulation, including Ethereum, Ripple, Litecoin, and many more. Cryptocurrencies are usually built on blockchain technology, a distributed ledger that records transactions in a secure and transparent manner.</p>
+
+    </div>
+
+    <div class=" col-sm-12 col-md-6 d-flex align-items-center justify-content-end">
+      <div class="picture2 m-3"></div>
+    </div>
+
+  </div>
+
+  <div class="row my-5">
+    <div class=" col-sm-12 col-md-4 dark">
+      <p class="p-3">Cryptocurrencies are often seen as an alternative to traditional currencies and have been gaining popularity in recent years due to their decentralized nature, low transaction fees, and potential for high returns on investment. However, they also come with their own set of risks and challenges, including volatility, security concerns, and regulatory uncertainty.</p>
+    </div>
+    <div class=" col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+      <div class="picture"></div>
+    </div>
+    <div class=" col-sm-12 col-md-4 dark">
+      <p class="p-3">Cryptocurrency is designed to be decentralized, which means that there is no single entity or organization that ensures its fairness. Instead, cryptocurrency networks rely on a system of consensus algorithms to validate transactions and maintain the integrity of the network.</p>
+
+    </div>
+
+  </div>
+
+  <div class="row my-5">
+    <div class=" col-sm-12 col-md-4 dark">
+      <h4 class="p-3">"What is a crypto 'Coin' or 'Token'?"</h4>
+      <p class="p-3">While the terms "coin" and "token" are often used interchangeably, they refer to two different types of digital assets in the cryptocurrency space.<br>the key difference between coins and tokens is that coins operate on their own independent blockchain network, while tokens are built on top of an existing blockchain network and use its infrastructure to operate.</p>
+    </div>
+    <div class=" col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+      <div class="picture"></div>
+    </div>
+    <div class=" col-sm-12 col-md-4 dark">
+      <h4 class="p-3">Coins</h4>
+      <p class="p-3">A Coin is a digital asset that operates on its own blockchain and has its own independent network. Coins are used as a means of payment, store of value, or a medium of exchange. Examples of coins include Bitcoin (BTC), Litecoin (LTC), and Bitcoin Cash (BCH).</p>
+      <h4 class="p-3">Tokens</h4>
+      <p class="p-3">On the other hand, a token is a digital asset that operates on top of an existing blockchain network, such as Ethereum, Binance Smart Chain, or others. Tokens are created using smart contracts and can represent a variety of assets, including digital assets, real-world assets, or other types of value. Tokens can be used for a variety of purposes, such as access to a platform or service, incentivizing users, or representing a share in a project. Examples of tokens include ERC-20 tokens, such as Basic Attention Token (BAT) or Chainlink (LINK).</p>
+    </div>
+
+  </div>
+
+</div>
+<div class="row" style="position:relative;">
+  <h3 class="p-3 text-white" style="position: absolute;top: 40%;left: 50%;width:unset;"><a style="text-decoration: none;" href="/lesson-2">Next</a></h3>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+
+<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+	<path d="M 48.454 82.069 c -0.417 0 -0.837 -0.087 -1.231 -0.265 c -1.076 -0.485 -1.768 -1.556 -1.768 -2.735 V 61.334 H 28.869 c -10.011 0 -18.85 6.824 -23.068 17.811 c -0.519 1.351 -1.926 2.133 -3.348 1.875 C 1.031 80.756 0 79.516 0 78.069 V 66.56 c 0 -16.268 2.937 -37.894 28.327 -37.894 h 17.128 V 10.931 c 0 -1.18 0.691 -2.25 1.768 -2.735 c 1.075 -0.484 2.337 -0.293 3.219 0.487 l 38.545 34.07 C 89.631 43.322 90 44.14 90 45 s -0.369 1.679 -1.014 2.248 L 50.441 81.317 C 49.883 81.812 49.173 82.069 48.454 82.069 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+</g>
+  </svg>
+</div>
+<div class="row" style="position:relative;">
+  <h3 class="p-3 text-white" style="position:absolute;top: 35%;left: 42%;z-index: 2; width:unset;"><a style="text-decoration: none;" href="/overview">Previous</a></h3>
+  <svg style="rotate: 180deg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve"><g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+	<path d="M 48.454 82.069 c -0.417 0 -0.837 -0.087 -1.231 -0.265 c -1.076 -0.485 -1.768 -1.556 -1.768 -2.735 V 61.334 H 28.869 c -10.011 0 -18.85 6.824 -23.068 17.811 c -0.519 1.351 -1.926 2.133 -3.348 1.875 C 1.031 80.756 0 79.516 0 78.069 V 66.56 c 0 -16.268 2.937 -37.894 28.327 -37.894 h 17.128 V 10.931 c 0 -1.18 0.691 -2.25 1.768 -2.735 c 1.075 -0.484 2.337 -0.293 3.219 0.487 l 38.545 34.07 C 89.631 43.322 90 44.14 90 45 s -0.369 1.679 -1.014 2.248 L 50.441 81.317 C 49.883 81.812 49.173 82.069 48.454 82.069 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+</g>
+  </svg>
+</div>
+<div th:replace="partials/partials :: footer"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:replace="partials/partials :: bootstrapScript"></script>
+</body>
+</html>
+
+
+
+
